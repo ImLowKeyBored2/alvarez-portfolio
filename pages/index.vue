@@ -19,9 +19,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .container {
-  width: 70%;
+  width: 75%;
 }
 
 .title {
