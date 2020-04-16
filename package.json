@@ -1,0 +1,17 @@
+{
+  "name": "lalvarez-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of the coffee addicted developer named Luis Alvarez",
+  "author": "Luis Alvarez",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
