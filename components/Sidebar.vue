@@ -12,6 +12,22 @@
       <a href="#">Contact Me</a>
     </section>
     <section class="social">
+      <font-awesome-icon
+        class="icon"
+        :icon="['fab', 'linkedin']"
+      />
+      <font-awesome-icon
+        class="icon"
+        :icon="['fab', 'github']"
+      />
+      <font-awesome-icon
+        class="icon"
+        :icon="['fab', 'facebook']"
+      />
+      <font-awesome-icon
+        class="icon"
+        :icon="['fab', 'twitter']"
+      />
     </section>
   </section>
 </template>
@@ -21,7 +37,7 @@
 
 #sidebar {
   height: 100%;
-  width: 30%;
+  width: 25%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -70,6 +86,19 @@
 
   .social {
     height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .icon {
+      font-size: 2em;
+      color: darken($main-font-color, 15%);
+
+      &:hover {
+        color: $main-font-color;
+        cursor: pointer;
+      }
+    }
   }
 }
 

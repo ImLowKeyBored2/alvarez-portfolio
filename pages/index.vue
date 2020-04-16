@@ -1,11 +1,20 @@
 <template>
   <div>
-    <Sidebar />
-    <div class="container">
-      <h1 class="title">
-        lalvarez-portfolio
-      </h1>
+    <div class="main-container">
+      <section class="about-container">
+        <h2>About Me</h2>
+      </section>
+      <section class="skills-container">
+        <h2>Things I Do</h2>
+      </section>
+      <section class="portfolio-container">
+        <h2>Portfolio</h2>
+      </section>
+      <section class="contact-container">
+        <h2>Contact Me</h2>
+      </section>
     </div>
+    <Sidebar />
   </div>
 </template>
 
@@ -20,14 +29,19 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
+.main-container {
   width: 75%;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
-.title {
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  letter-spacing: 1px;
+  section {
+    margin: 2rem 0;
+    padding: 1rem;
+
+    h2 {
+      text-align: center;
+    }
+  }
 }
 </style>
