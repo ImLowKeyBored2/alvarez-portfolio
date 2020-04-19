@@ -60,7 +60,7 @@
     }
 
     img {
-      border-radius: 15%;
+      border-radius: 50%;
     }
   }
 
