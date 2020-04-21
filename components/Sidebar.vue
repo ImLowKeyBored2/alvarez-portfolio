@@ -7,7 +7,7 @@
     </section>
     <section class="nav">
       <a href="#">About Me</a>
-      <a href="#">Things I Do</a>
+      <a href="#">Things I Can Do</a>
       <a href="#">Portfolio</a>
       <a href="#">Contact Me</a>
     </section>
@@ -28,6 +28,10 @@
         class="icon"
         :icon="['fab', 'twitter']"
       />
+      <font-awesome-icon
+        class="icon"
+        :icon="['fab', 'hackerrank']"
+      />
     </section>
   </section>
 </template>
@@ -44,7 +48,7 @@
   right: 0;
   overflow-x: hidden;
   padding: 1rem;
-  background-color: #21c6ce;
+  background-color: $main-accent-color;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -60,7 +64,7 @@
     }
 
     img {
-      border-radius: 15%;
+      border-radius: 50%;
     }
   }
 
