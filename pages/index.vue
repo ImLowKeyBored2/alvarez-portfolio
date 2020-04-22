@@ -86,11 +86,21 @@
 
 <script>
 import Sidebar from '~/components/Sidebar.vue'
+import {createClient} from '~/plugins/contentful.js'
+
+const client = createClient()
 
 export default {
+  asyncData ({env}) {
+    return Promise.all([
+      client.getEntries()
+    ]).then(([projects]) => {
+      console.log(projects.items)
+    }).catch(console.error)
+  },
   components: {
     Sidebar
-  }
+  },
 }
 </script>
 
