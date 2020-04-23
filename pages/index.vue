@@ -74,7 +74,7 @@
           <h2>Portfolio</h2>
           <section
             class="project-container"
-            v-for="project in projects"
+            v-for="project in projects[currentPage]"
             :key="project.fields.id"
           >
             <img
@@ -110,6 +110,20 @@
               </section>
             </section>
           </section>
+          <section class="pagination">
+            <button
+              :disabled="!prevPage"
+               v-on:click="handlePrevPage"
+            >
+              Previous
+            </button>
+            <button
+              :disabled="!nextPage"
+              v-on:click="handleNextPage"
+            >
+              Next
+            </button>
+          </section>
         </section>
       </section>
       <section class="child-container contact-container">
@@ -134,15 +148,71 @@ export default {
   },
   data () {
     return {
-      projects: []
+      projects: [],
+      pageNumberCount: 0,
+      currentPage: 0,
+      prevPage: null,
+      nextPage: null
     }
   },
   asyncData ({env}) {
     return Promise.all([
       client.getEntries()
     ]).then(([projects]) => {
-      return { projects: projects.items }
+
+      function chunk(arr, chunkSize) {
+        const chunkedArray = [];
+        for (let i = 0; i < arr.length; i += chunkSize) {
+          chunkedArray.push(arr.slice(i, i + chunkSize));
+        }
+        return chunkedArray;
+      }
+
+      const projectsChunked = chunk(projects.items, 3);
+      const pageNumberCount = projectsChunked.length - 1;
+      let nextPage = null;
+
+      if (pageNumberCount > 1) {
+        nextPage = 1;
+      }
+
+      return {
+        projects: projectsChunked,
+        pageNumberCount,
+        nextPage
+      }
     }).catch(err => console.error(`[Projects] Could not load projects: ${err}`))
+  },
+  methods: {
+    handlePrevPage: function() {
+      const tempPrevPage = this.currentPage - 1;
+
+      if (tempPrevPage > 0) {
+        this.prevPage = tempPrevPage;
+        this.nextPage = this.currentPage;
+        this.currentPage = tempPrevPage;
+      }
+
+      if (tempPrevPage === 0) {
+        this.prevPage = null;
+        this.nextPage = this.currentPage;
+        this.currentPage = tempPrevPage;
+      }
+    },
+    handleNextPage: function() {
+      const tempNextPage = this.currentPage + 1;
+
+      if (tempNextPage > 0 && tempNextPage < this.pageNumberCount) {
+        this.nextPage = tempNextPage;
+        this.prevPage = this.currentPage;
+        this.currentPage = tempNextPage;
+      }
+
+      if (tempNextPage === this.pageNumberCount) {
+        this.nextPage = null;
+        this.currentPage = tempNextPage;
+      }
+    }
   },
 }
 </script>
@@ -231,6 +301,7 @@ export default {
     img {
       width: 50%;
       border-radius: 2%;
+      height: 20rem;
     }
 
     .project-information {
@@ -243,6 +314,11 @@ export default {
         margin-right: 1rem;
       }
     }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>
