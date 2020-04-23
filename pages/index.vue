@@ -72,6 +72,11 @@
       <section class="child-container portfolio-container">
         <section class="content-container">
           <h2>Portfolio</h2>
+          <p>
+            A few of my project that I've been working on through my software engineer life.
+            I feel very passionate about open source software and have made a few contributions to different projects.
+            Feel free to send me feedback through GitHub on any of my projects.
+          </p>
           <section
             class="project-container"
             v-for="project in projects[currentPage]"
@@ -294,14 +299,10 @@ export default {
     border-bottom: 0.3rem solid $main-border-color;
     padding: 2rem 0;
 
-    &:last-child  {
-      border: none;
-    }
-
     img {
-      width: 55%;
+      width: 50%;
       border-radius: 2%;
-      height: 20rem;
+      height: 25rem;
     }
 
     .project-information {
