@@ -94,4 +94,14 @@ h5 {
 h6 {
   font-size: .67em;
 }
+
+.icon {
+ font-size: 2em;
+ color: darken($main-font-color, 10%);
+
+ &:hover {
+   color: $main-font-color;
+   cursor: pointer;
+ }
+}
 </style>

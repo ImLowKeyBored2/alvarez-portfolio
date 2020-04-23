@@ -93,16 +93,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    .icon {
-      font-size: 2em;
-      color: darken($main-font-color, 15%);
-
-      &:hover {
-        color: $main-font-color;
-        cursor: pointer;
-      }
-    }
   }
 }
 

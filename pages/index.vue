@@ -72,6 +72,44 @@
       <section class="child-container portfolio-container">
         <section class="content-container">
           <h2>Portfolio</h2>
+          <section
+            class="project-container"
+            v-for="project in projects"
+            :key="project.fields.id"
+          >
+            <img
+              :src="project.fields.backgroundImg.fields.file.url"
+              :alt="project.fields.title"
+            />
+            <section class="project-information">
+              <h3><strong>{{ project.fields.title }}</strong></h3>
+              <p>{{ project.fields.description }}</p>
+              <section>
+                <a
+                  v-if="project.fields.githubUrl"
+                  :href="project.fields.githubUrl"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <font-awesome-icon
+                    class="icon"
+                    :icon="['fab', 'github']"
+                  />
+                </a>
+                <a
+                  v-if="project.fields.projectUrl"
+                  :href="project.fields.projectUrl"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <font-awesome-icon
+                    class="icon"
+                    :icon="['fas', 'laptop-code']"
+                  />
+                </a>
+              </section>
+            </section>
+          </section>
         </section>
       </section>
       <section class="child-container contact-container">
@@ -91,15 +129,20 @@ import {createClient} from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
+  components: {
+    Sidebar
+  },
+  data () {
+    return {
+      projects: []
+    }
+  },
   asyncData ({env}) {
     return Promise.all([
       client.getEntries()
     ]).then(([projects]) => {
-      console.log(projects.items)
-    }).catch(console.error)
-  },
-  components: {
-    Sidebar
+      return { projects: projects.items }
+    }).catch(err => console.error(`[Projects] Could not load projects: ${err}`))
   },
 }
 </script>
@@ -172,6 +215,33 @@ export default {
     #title {
       color: $main-accent-color;
       font-size: 4rem;
+    }
+  }
+
+  .project-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3rem solid $main-border-color;
+    padding: 2rem 0;
+
+    &:last-child  {
+      border: none;
+    }
+
+    img {
+      width: 50%;
+      border-radius: 2%;
+    }
+
+    .project-information {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      a:nth-child(1)  {
+        margin-right: 1rem;
+      }
     }
   }
 }
