@@ -70,5 +70,8 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    fallback: true
   }
 }
