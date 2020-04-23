@@ -301,7 +301,6 @@ export default {
 @import '@/assets/scss/variables.scss';
 
 .main-container {
-  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
