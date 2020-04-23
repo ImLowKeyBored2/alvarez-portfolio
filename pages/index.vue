@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-container">
-      <section class="child-container about-container">
+      <section id="about-container" class="child-container">
         <section id="jumbotron" />
         <section class="content-container">
           <h1 id="title">Luis Alvarez</h1>
@@ -15,7 +15,7 @@
           </p>
         </section>
       </section>
-      <section class="child-container skills-container">
+      <section id="skills-container" class="child-container">
         <section class="content-container">
           <h2>Things I Can Do</h2>
           <p>
@@ -69,7 +69,7 @@
           </section>
         </section>
       </section>
-      <section class="child-container portfolio-container">
+      <section id="portfolio-container" class="child-container">
         <section class="content-container">
           <h2>Portfolio</h2>
           <p>
@@ -131,7 +131,7 @@
           </section>
         </section>
       </section>
-      <section class="child-container contact-container">
+      <section id="contact-container" class="child-container">
         <section class="content-container">
           <h2>Contact Me</h2>
           <p>Have some questions or just want to just chat? Shoot me a message</p>
@@ -348,7 +348,7 @@ export default {
     }
   }
 
-  .about-container {
+  #about-container {
     margin-top: 0;
     padding-top: 0;
 

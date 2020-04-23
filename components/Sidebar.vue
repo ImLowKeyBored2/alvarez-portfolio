@@ -16,10 +16,10 @@
         <h2>Full Stack Developer</h2>
       </section>
       <section class="nav">
-        <a href="#">About Me</a>
-        <a href="#">Things I Can Do</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Contact Me</a>
+        <a href="#about-container">About Me</a>
+        <a href="#skills-container">Things I Can Do</a>
+        <a href="#portfolio-container">Portfolio</a>
+        <a href="#contact-container">Contact Me</a>
       </section>
       <section class="social">
         <a
