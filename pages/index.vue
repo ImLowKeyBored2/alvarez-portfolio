@@ -112,13 +112,13 @@
           </section>
           <section class="pagination">
             <button
-              :disabled="!prevPage"
+              :disabled="prevPage === null"
                v-on:click="handlePrevPage"
             >
               Previous
             </button>
             <button
-              :disabled="!nextPage"
+              :disabled="nextPage === null"
               v-on:click="handleNextPage"
             >
               Next
@@ -202,7 +202,7 @@ export default {
     handleNextPage: function() {
       const tempNextPage = this.currentPage + 1;
 
-      if (tempNextPage > 0 && tempNextPage < this.pageNumberCount) {
+      if (tempNextPage >= 0 && tempNextPage < this.pageNumberCount) {
         this.nextPage = tempNextPage;
         this.prevPage = this.currentPage;
         this.currentPage = tempNextPage;
@@ -299,7 +299,7 @@ export default {
     }
 
     img {
-      width: 50%;
+      width: 55%;
       border-radius: 2%;
       height: 20rem;
     }
@@ -318,7 +318,28 @@ export default {
 
   .pagination {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
+    button {
+      margin: 0 1rem;
+      padding: 1rem 3rem;
+      text-align: center;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      background-color: $main-accent-color;
+      border: 3px solid $main-accent-color-lighter;
+
+      &:focus, &:hover {
+        background-color: $main-accent-color-darker;
+      }
+
+      &:disabled {
+        background-color: #cccccc;
+        border-color: #999999;
+        color: #666666;
+      }
+    }
   }
 }
 </style>
