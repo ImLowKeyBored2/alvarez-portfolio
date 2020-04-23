@@ -22,26 +22,56 @@
         <a href="#">Contact Me</a>
       </section>
       <section class="social">
-        <font-awesome-icon
-          class="icon"
-          :icon="['fab', 'linkedin']"
-        />
-        <font-awesome-icon
-          class="icon"
-          :icon="['fab', 'github']"
-        />
-        <font-awesome-icon
-          class="icon"
-          :icon="['fab', 'facebook']"
-        />
-        <font-awesome-icon
-          class="icon"
-          :icon="['fab', 'twitter']"
-        />
-        <font-awesome-icon
-          class="icon"
-          :icon="['fab', 'hackerrank']"
-        />
+        <a
+          href="https://www.linkedin.com/in/luis-alvarez-pacheco/"
+          target="_blank"
+          rel="noopener"
+        >
+          <font-awesome-icon
+            class="icon"
+            :icon="['fab', 'linkedin']"
+          />
+        </a>
+        <a
+          href="https://github.com/TheGameFreak720"
+          target="_blank"
+          rel="noopener"
+        >
+          <font-awesome-icon
+            class="icon"
+            :icon="['fab', 'github']"
+          />
+        </a>
+        <a
+          href="https://www.facebook.com/luis.alvarez6033"
+          target="_blank"
+          rel="noopener"
+        >
+          <font-awesome-icon
+            class="icon"
+            :icon="['fab', 'facebook']"
+          />
+        </a>
+        <a
+          href="https://twitter.com/MoonMan6033"
+          target="_blank"
+          rel="noopener"
+        >
+          <font-awesome-icon
+            class="icon"
+            :icon="['fab', 'twitter']"
+          />
+        </a>
+        <a
+          href="https://www.hackerrank.com/cyanide6033"
+          target="_blank"
+          rel="noopener"
+        >
+          <font-awesome-icon
+            class="icon"
+            :icon="['fab', 'hackerrank']"
+          />
+        </a>
       </section>
     </section>
   </section>
