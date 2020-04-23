@@ -135,7 +135,7 @@
         <section class="content-container">
           <h2>Contact Me</h2>
           <p>Have some questions or just want to just chat? Shoot me a message</p>
-          <form>
+          <form v-on:submit="handleSubmit">
             <section class="first-section">
               <label for="name" class="hidden-label">
                 Name
@@ -189,8 +189,10 @@
 </template>
 
 <script>
+import { createClient } from '~/plugins/contentful.js'
+import axios from 'axios';
+
 import Sidebar from '~/components/Sidebar.vue'
-import {createClient} from '~/plugins/contentful.js'
 
 const client = createClient()
 
@@ -268,6 +270,28 @@ export default {
         this.nextPage = null;
         this.currentPage = tempNextPage;
       }
+    },
+    handleSubmit: function(event) {
+      event.preventDefault();
+       axios
+        .post(
+          'https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail',
+          {
+            name: this.name,
+            email: this.email,
+            subject: this.subject,
+            message: this.message,
+          }
+        )
+        .then(res => {
+          this.name = '';
+          this.email = '';
+          this.subject = '';
+          this.message = '';
+        })
+        .catch(err => {
+          console.error(err)
+        })
     }
   },
 }
