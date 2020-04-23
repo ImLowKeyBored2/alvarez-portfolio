@@ -56,7 +56,7 @@ table {
 
 html {
   font-family: 'Arvo', serif;
-  font-size: 1em;
+  font-size: 1.3em;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -80,7 +80,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.17em;
+  font-size: 1.4em;
 }
 
 h4 {
@@ -93,5 +93,15 @@ h5 {
 
 h6 {
   font-size: .67em;
+}
+
+.icon {
+ font-size: 2em;
+ color: darken($main-font-color, 10%);
+
+ &:hover {
+   color: $main-font-color;
+   cursor: pointer;
+ }
 }
 </style>
