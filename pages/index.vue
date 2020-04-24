@@ -275,7 +275,7 @@ export default {
         height: 15rem;
       }
 
-      @media (max-width: $tablet-lg) {
+      @media (max-width: $tablet-sm) {
         width: 100%;
         height: 15rem;
       }
@@ -334,6 +334,7 @@ export default {
     .first-section {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin-bottom: 2rem;
 
       input {
@@ -345,6 +346,11 @@ export default {
 
         &:focus {
           border: 3px solid $input-border-color-focus;
+        }
+
+        @media (max-width: $tablet-lg) {
+          width: 100%;
+          margin: 1rem 0;
         }
       }
     }
