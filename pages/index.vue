@@ -261,10 +261,24 @@ export default {
     border-bottom: 0.3rem solid $main-border-color;
     padding: 2rem 0;
 
+    @media (max-width: $tablet-lg) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     img {
       width: 50%;
       border-radius: 2%;
-      height: 25rem;
+      height: 20rem;
+
+      @media (max-width: $desktop-sm) {
+        height: 15rem;
+      }
+
+      @media (max-width: $tablet-lg) {
+        width: 100%;
+        height: 15rem;
+      }
     }
 
     .project-information {
@@ -272,6 +286,11 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      @media (max-width: $tablet-lg) {
+        width: 100%;
+        height: 15rem;
+      }
 
       a:nth-child(1)  {
         margin-right: 1rem;
