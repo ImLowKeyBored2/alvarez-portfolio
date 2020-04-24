@@ -104,4 +104,16 @@ h6 {
    cursor: pointer;
  }
 }
+
+.content-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-container > * {
+  margin: 2rem 0;
+}
 </style>
