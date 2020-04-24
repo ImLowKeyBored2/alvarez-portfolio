@@ -166,6 +166,7 @@
 
     img {
       border-radius: 50%;
+      height: 10rem;
     }
   }
 
