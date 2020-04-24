@@ -65,6 +65,10 @@ html {
   box-sizing: border-box;
   background-color: $main-bg-color;
   color: $main-font-color;
+
+  @media (max-width: $desktop-sm) {
+    font-size: 1rem;
+  }
 }
 
 a {
@@ -103,5 +107,17 @@ h6 {
    color: $main-font-color;
    cursor: pointer;
  }
+}
+
+.content-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-container > * {
+  margin: 2rem 0;
 }
 </style>

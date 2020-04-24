@@ -1,73 +1,11 @@
 <template>
   <div>
     <div class="main-container">
-      <section id="about-container" class="child-container">
-        <section id="jumbotron" />
-        <section class="content-container">
-          <h1 id="title">Luis Alvarez</h1>
-          <h2>About Me</h2>
-          <p>
-            I'm a Full Stack Engineer and tech enthusiast. My passion for tech started when I was a little kid playing videogames.
-            That passion for how videogames are made lead me to learn to program and make a few videogames.
-            Later along I decided to learn web development and started an amazing journey building web apps for some clients and landing my dream job.
-            My goal is to make people's lives easier by making tools to assist them in their day to day operations.
-            This drive reflects on my work as I build applications and contribute to open source projects fostering a better community. One of my core beliefs is that every person has the potential to do great things.
-          </p>
-        </section>
+      <section class="child-container">
+        <About />
       </section>
-      <section id="skills-container" class="child-container">
-        <section class="content-container">
-          <h2>Things I Can Do</h2>
-          <p>
-            I am a dynamic, quick thinking creative professional that loves to develop beautiful and easy to use websites and web apps.
-            One thing I'm most passionate about is immersing myself into a topic like machine learning just for fun.
-            I'm also a pretty easy guy to work with. The following is a rough overview of my skillset.
-          </p>
-          <section class="items-container">
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'code']"
-              />
-              <p>Experience on Full Stack technologies like React, Vue, NodeJS and GraphQL</p>
-            </section>
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'terminal']"
-              />
-              <p>Daily user of Linux/Unix systems having a basic understanding on how it operates</p>
-            </section>
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'code-branch']"
-              />
-              <p>Managed projects using Git for version control</p>
-            </section>
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'bug']"
-              />
-              <p>Always willing to get into the weeds to analyze and solve bugs</p>
-            </section>
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'server']"
-              />
-              <p>Expertise in both relational and non-relational databases</p>
-            </section>
-            <section class="item">
-              <font-awesome-icon
-                class="item-icon"
-                :icon="['fas', 'book']"
-              />
-              <p>Capable of learning new technologies on the job or outside to meet work or personal goals</p>
-            </section>
-          </section>
-        </section>
+      <section class="child-container">
+        <Skills />
       </section>
       <section id="portfolio-container" class="child-container">
         <section class="content-container">
@@ -193,12 +131,16 @@ import { createClient } from '~/plugins/contentful.js'
 import axios from 'axios';
 
 import Sidebar from '~/components/Sidebar.vue'
+import About from '~/components/About.vue'
+import Skills from '~/components/Skills.vue'
 
 const client = createClient()
 
 export default {
   components: {
-    Sidebar
+    Sidebar,
+    About,
+    Skills
   },
   data () {
     return {
@@ -311,60 +253,6 @@ export default {
     &:nth-child(4)  {
       border: none;
     }
-
-    .content-container {
-      width: 80%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-
-      .items-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        .item {
-          display: flex;
-          align-items: center;
-          width: 50%;
-
-          .item-icon {
-            font-size: 1.3rem;
-            background-color: $main-accent-color;
-            border-radius: 50%;
-            padding: 1.3rem;
-          }
-        }
-
-        .item > * {
-          margin: 1rem;
-        }
-      }
-    }
-
-    .content-container > * {
-      margin: 2rem 0;
-    }
-  }
-
-  #about-container {
-    margin-top: 0;
-    padding-top: 0;
-
-    #jumbotron {
-      margin-top: 0;
-      padding-top: 0;
-      height: 20rem;
-      background-image: url("../assets/img/spiral.jpg");
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    #title {
-      color: $main-accent-color;
-      font-size: 4rem;
-    }
   }
 
   .project-container {
@@ -373,10 +261,24 @@ export default {
     border-bottom: 0.3rem solid $main-border-color;
     padding: 2rem 0;
 
+    @media (max-width: $tablet-lg) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     img {
       width: 50%;
       border-radius: 2%;
-      height: 25rem;
+      height: 20rem;
+
+      @media (max-width: $desktop-sm) {
+        height: 15rem;
+      }
+
+      @media (max-width: $tablet-sm) {
+        width: 100%;
+        height: 15rem;
+      }
     }
 
     .project-information {
@@ -384,6 +286,11 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      @media (max-width: $tablet-lg) {
+        width: 100%;
+        height: 15rem;
+      }
 
       a:nth-child(1)  {
         margin-right: 1rem;
@@ -427,6 +334,7 @@ export default {
     .first-section {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin-bottom: 2rem;
 
       input {
@@ -438,6 +346,11 @@ export default {
 
         &:focus {
           border: 3px solid $input-border-color-focus;
+        }
+
+        @media (max-width: $tablet-lg) {
+          width: 100%;
+          margin: 1rem 0;
         }
       }
     }
