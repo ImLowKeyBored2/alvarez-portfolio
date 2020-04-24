@@ -146,6 +146,14 @@
   flex-direction: column;
   justify-content: space-around;
 
+  @media (max-width: $desktop-sm) {
+    width: 50%;
+  }
+
+  @media (max-width: $mobile-lg) {
+    width: 80%;
+  }
+
   .me-container {
     display: flex;
     flex-direction: column;
