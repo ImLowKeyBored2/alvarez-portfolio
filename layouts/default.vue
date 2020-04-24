@@ -65,6 +65,10 @@ html {
   box-sizing: border-box;
   background-color: $main-bg-color;
   color: $main-font-color;
+
+  @media (max-width: $desktop-sm) {
+    font-size: 1rem;
+  }
 }
 
 a {
