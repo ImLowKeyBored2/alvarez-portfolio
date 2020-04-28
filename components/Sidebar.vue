@@ -13,7 +13,7 @@
       <section class="me-container">
         <img src="@/assets/img/luis.jpg" alt="Luis Alvarez" />
         <h1>Luis Alvarez</h1>
-        <h2>Full Stack Developer</h2>
+        <h2>Software Engineer</h2>
       </section>
       <section class="nav">
         <a href="#about-container">About Me</a>
@@ -161,7 +161,7 @@
     height: 40%;
 
     img, h1, h2 {
-      padding: 1rem;
+      padding: 1rem 0;
     }
 
     img {
