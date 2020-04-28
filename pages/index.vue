@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="main-container">
+  <section>
+    <section class="main-container">
       <section class="child-container">
         <About />
       </section>
@@ -121,9 +121,10 @@
           </form>
         </section>
       </section>
-    </div>
+      <Footer />
+    </section>
     <Sidebar />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -133,6 +134,7 @@ import axios from 'axios';
 import Sidebar from '~/components/Sidebar.vue'
 import About from '~/components/About.vue'
 import Skills from '~/components/Skills.vue'
+import Footer from '~/components/Footer.vue'
 
 const client = createClient()
 
@@ -140,7 +142,8 @@ export default {
   components: {
     Sidebar,
     About,
-    Skills
+    Skills,
+    Footer
   },
   data () {
     return {

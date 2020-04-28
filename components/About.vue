@@ -1,5 +1,5 @@
 <template>
-  <section id="about-container">
+  <header id="about-container">
     <section id="jumbotron" />
     <section class="content-container">
       <h1 id="title">Luis Alvarez</h1>
@@ -12,7 +12,7 @@
         This drive reflects on my work as I build applications and contribute to open source projects fostering a better community. One of my core beliefs is that every person has the potential to do great things.
       </p>
     </section>
-  </section>
+  </header>
 </template>
 
 <style lang="scss">
