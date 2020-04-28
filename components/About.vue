@@ -29,6 +29,10 @@
     background-image: url("../assets/img/spiral.jpg");
     background-position: center;
     background-repeat: no-repeat;
+
+    @media (max-width: $mobile-lg) {
+      height: 10rem;
+    }
   }
 
   #title {
