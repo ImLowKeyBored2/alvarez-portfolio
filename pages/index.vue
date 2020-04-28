@@ -11,7 +11,7 @@
         <section class="content-container">
           <h2>Portfolio</h2>
           <p>
-            A few of my project that I've been working on through my software engineer life.
+            A few of the projects that I've been working on through my software engineer life.
             I feel very passionate about open source software and have made a few contributions to different projects.
             Feel free to send me feedback through GitHub on any of my projects.
           </p>
