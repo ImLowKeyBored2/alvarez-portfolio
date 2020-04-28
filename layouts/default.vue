@@ -67,7 +67,11 @@ html {
   color: $main-font-color;
 
   @media (max-width: $desktop-sm) {
-    font-size: 1rem;
+    font-size: 1em;
+  }
+
+  p {
+    line-height: 1.6;
   }
 }
 
