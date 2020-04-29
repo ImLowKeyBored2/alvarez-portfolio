@@ -6,6 +6,9 @@ $main-border-color: lighten($main-bg-color, 10%);
 $main-accent-color: #21c6ce;
 $main-accent-color-lighter: lighten($main-accent-color, 5%);
 $main-accent-color-darker: darken($main-accent-color, 10%);
+$success: #29c7ac;
+$warning: #FFBF00;
+$danger: #c72c41;
 
 // Input
 $input-border-color: #ededed;
