@@ -53,6 +53,10 @@
               </section>
             </section>
           </section>
+          <ErrorBox
+            ng-if="!projects"
+            errorMessage="There was an error loading the projects. Please try again later."
+          />
           <section class="pagination">
             <button
               :disabled="prevPage === null"
@@ -135,6 +139,7 @@ import Sidebar from '~/components/Sidebar.vue'
 import About from '~/components/About.vue'
 import Skills from '~/components/Skills.vue'
 import Footer from '~/components/Footer.vue'
+import ErrorBox from '~/components/ErrorBox.vue'
 
 const client = createClient()
 
@@ -143,7 +148,8 @@ export default {
     Sidebar,
     About,
     Skills,
-    Footer
+    Footer,
+    ErrorBox
   },
   data () {
     return {
