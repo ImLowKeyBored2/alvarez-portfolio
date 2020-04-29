@@ -54,7 +54,7 @@
             </section>
           </section>
           <ErrorBox
-            ng-if="!projects"
+            v-if="!projects.length"
             errorMessage="There was an error loading the projects. Please try again later."
           />
           <section class="pagination">
