@@ -5,7 +5,7 @@
       <p>
         I am a dynamic, quick thinking creative professional that loves to develop beautiful and easy to use websites and web apps.
         One thing I'm most passionate about is immersing myself into a topic like machine learning just for fun.
-        I'm also a pretty easy guy to work with. The following is a rough overview of my skillset.
+        I'm also a pretty easy person to work with. The following is a rough overview of my skillset.
       </p>
       <section class="skill-container">
         <section class="skill">
