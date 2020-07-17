@@ -23,7 +23,7 @@
       </section>
       <section class="social">
         <a
-          href="https://www.linkedin.com/in/luis-alvarez-pacheco/"
+          href="https://www.linkedin.com/in/ori-alvarez-pacheco/"
           target="_blank"
           rel="noopener"
         >
@@ -40,16 +40,6 @@
           <font-awesome-icon
             class="icon"
             :icon="['fab', 'github']"
-          />
-        </a>
-        <a
-          href="https://www.facebook.com/luis.alvarez6033"
-          target="_blank"
-          rel="noopener"
-        >
-          <font-awesome-icon
-            class="icon"
-            :icon="['fab', 'facebook']"
           />
         </a>
         <a
