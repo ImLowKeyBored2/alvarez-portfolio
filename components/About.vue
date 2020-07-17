@@ -2,7 +2,7 @@
   <header id="about-container">
     <section id="jumbotron" />
     <section class="content-container">
-      <h1 id="title">(Ori) Luis Alvarez</h1>
+      <h1 id="title">Ori Alvarez</h1>
       <h2>About Me</h2>
       <p>
         I'm a Full Stack Engineer and tech enthusiast. My passion for tech started when I was a little kid playing videogames.

@@ -1,6 +1,6 @@
 <template>
   <footer class="child-container">
-    <p>&copy {{ currentYear }} (Ori) Luis Alvarez</p>
+    <p>&copy {{ currentYear }} Ori Alvarez</p>
   </footer>
 </template>
 
