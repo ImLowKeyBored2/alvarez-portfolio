@@ -1,6 +1,6 @@
 # lalvarez-portfolio
 
-> Portfolio of the coffee addicted developer named Luis Alvarez
+> Portfolio of the coffee addicted developer named Ori Alvarez
 
 ## Build Setup
 
