@@ -1,4 +1,4 @@
-# lalvarez-portfolio
+# alvarez-portfolio
 
 > Portfolio of the coffee addicted developer named Ori Alvarez
 

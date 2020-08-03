@@ -20,8 +20,8 @@ exports.contactUsEmail = functions.https.onRequest((req, res) => {
 
   const mailOptions = {
     from: gmailEmail,
-    to: 'luis.alvarez@commithub.com',
-    subject: 'lalvarez-portfolio: Contact Us',
+    to: 'ori.alvarez@commithub.com',
+    subject: 'alvarez-portfolio: Contact Us',
     text: `Contact info: ${name} (${email}) \nSubject: ${subject}\nMessage: ${message}`,
   }
 

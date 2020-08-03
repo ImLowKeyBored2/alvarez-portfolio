@@ -11,7 +11,7 @@
     </section>
     <section v-if="showMenu" id="sidebar">
       <section class="me-container">
-        <img src="@/assets/img/luis.jpg" alt="Luis Alvarez" />
+        <img src="@/assets/img/luis.jpg" alt="Ori Alvarez" />
         <h1>Ori Alvarez</h1>
         <h2>Software Engineer</h2>
       </section>
