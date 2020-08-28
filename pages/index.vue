@@ -11,21 +11,24 @@
         <section class="content-container">
           <h2>Portfolio</h2>
           <p>
-            A few of the projects that I've been working on through my software engineer life.
-            I feel very passionate about open source software and have made a few contributions to different projects.
-            Feel free to send me feedback through GitHub on any of my projects.
+            A few of the projects that I've been working on through my software
+            engineer life. I feel very passionate about open source software and
+            have made a few contributions to different projects. Feel free to
+            send me feedback through GitHub on any of my projects.
           </p>
           <section
-            class="project-container"
             v-for="project in projects[currentPage]"
             :key="project.fields.id"
+            class="project-container"
           >
             <img
               :src="project.fields.backgroundImg.fields.file.url"
               :alt="project.fields.title"
             />
             <section class="project-information">
-              <h3><strong>{{ project.fields.title }}</strong></h3>
+              <h3>
+                <strong>{{ project.fields.title }}</strong>
+              </h3>
               <p>{{ project.fields.description }}</p>
               <section>
                 <a
@@ -34,10 +37,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  <font-awesome-icon
-                    class="icon"
-                    :icon="['fab', 'github']"
-                  />
+                  <font-awesome-icon class="icon" :icon="['fab', 'github']" />
                 </a>
                 <a
                   v-if="project.fields.projectUrl"
@@ -55,19 +55,13 @@
           </section>
           <ErrorBox
             v-if="!projects.length"
-            errorMessage="There was an error loading the projects. Please try again later."
+            error-message="There was an error loading the projects. Please try again later."
           />
           <section class="pagination">
-            <button
-              :disabled="prevPage === null"
-               v-on:click="handlePrevPage"
-            >
+            <button :disabled="prevPage === null" @click="handlePrevPage">
               Previous
             </button>
-            <button
-              :disabled="nextPage === null"
-              v-on:click="handleNextPage"
-            >
+            <button :disabled="nextPage === null" @click="handleNextPage">
               Next
             </button>
           </section>
@@ -83,16 +77,16 @@
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful.js'
+import { createClient } from "~/plugins/contentful.js";
 
-import Sidebar from '~/components/Sidebar.vue'
-import About from '~/components/About.vue'
-import Skills from '~/components/Skills.vue'
-import ContactForm from '~/components/ContactForm.vue'
-import Footer from '~/components/Footer.vue'
-import ErrorBox from '~/components/ErrorBox.vue'
+import Sidebar from "~/components/Sidebar.vue";
+import About from "~/components/About.vue";
+import Skills from "~/components/Skills.vue";
+import ContactForm from "~/components/ContactForm.vue";
+import Footer from "~/components/Footer.vue";
+import ErrorBox from "~/components/ErrorBox.vue";
 
-const client = createClient()
+const client = createClient();
 
 export default {
   components: {
@@ -101,47 +95,48 @@ export default {
     Skills,
     ContactForm,
     Footer,
-    ErrorBox
+    ErrorBox,
   },
-  data () {
+  asyncData() {
+    return Promise.all([client.getEntries()])
+      .then(([projects]) => {
+        function chunk(arr, chunkSize) {
+          const chunkedArray = [];
+          for (let i = 0; i < arr.length; i += chunkSize) {
+            chunkedArray.push(arr.slice(i, i + chunkSize));
+          }
+          return chunkedArray;
+        }
+
+        const projectsChunked = chunk(projects.items, 3);
+        const pageNumberCount = projectsChunked.length - 1;
+        let nextPage = null;
+
+        if (pageNumberCount > 1) {
+          nextPage = 1;
+        }
+
+        return {
+          projects: projectsChunked,
+          pageNumberCount,
+          nextPage,
+        };
+      })
+      .catch((err) =>
+        console.error(`[Projects] Could not load projects: ${err}`)
+      );
+  },
+  data() {
     return {
       projects: [],
       pageNumberCount: 0,
       currentPage: 0,
       prevPage: null,
       nextPage: null,
-    }
-  },
-  asyncData ({env}) {
-    return Promise.all([
-      client.getEntries()
-    ]).then(([projects]) => {
-
-      function chunk(arr, chunkSize) {
-        const chunkedArray = [];
-        for (let i = 0; i < arr.length; i += chunkSize) {
-          chunkedArray.push(arr.slice(i, i + chunkSize));
-        }
-        return chunkedArray;
-      }
-
-      const projectsChunked = chunk(projects.items, 3);
-      const pageNumberCount = projectsChunked.length - 1;
-      let nextPage = null;
-
-      if (pageNumberCount > 1) {
-        nextPage = 1;
-      }
-
-      return {
-        projects: projectsChunked,
-        pageNumberCount,
-        nextPage
-      }
-    }).catch(err => console.error(`[Projects] Could not load projects: ${err}`))
+    };
   },
   methods: {
-    handlePrevPage: function() {
+    handlePrevPage: function () {
       const tempPrevPage = this.currentPage - 1;
 
       if (tempPrevPage > 0) {
@@ -156,7 +151,7 @@ export default {
         this.currentPage = tempPrevPage;
       }
     },
-    handleNextPage: function() {
+    handleNextPage: function () {
       const tempNextPage = this.currentPage + 1;
 
       if (tempNextPage >= 0 && tempNextPage < this.pageNumberCount) {
@@ -169,13 +164,13 @@ export default {
         this.nextPage = null;
         this.currentPage = tempNextPage;
       }
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .main-container {
   display: flex;
@@ -185,7 +180,7 @@ export default {
   .child-container {
     border-bottom: 0.3rem solid $main-border-color;
 
-    &:nth-child(4)  {
+    &:nth-child(4) {
       border: none;
     }
   }
@@ -227,7 +222,7 @@ export default {
         height: 15rem;
       }
 
-      a:nth-child(1)  {
+      a:nth-child(1) {
         margin-right: 1rem;
       }
     }
@@ -249,7 +244,8 @@ export default {
       background-color: $main-accent-color;
       border: 3px solid $main-accent-color-lighter;
 
-      &:focus, &:hover {
+      &:focus,
+      &:hover {
         background-color: $main-accent-color-darker;
       }
 

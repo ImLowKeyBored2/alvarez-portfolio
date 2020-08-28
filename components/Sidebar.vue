@@ -2,8 +2,8 @@
   <section>
     <section
       class="menu-button"
-      v-on:click="handleMenu"
-      :class="{change: showMenu === true}"
+      :class="{ change: showMenu === true }"
+      @click="handleMenu"
     >
       <section class="bar1"></section>
       <section class="bar2"></section>
@@ -27,40 +27,28 @@
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon
-            class="icon"
-            :icon="['fab', 'linkedin']"
-          />
+          <font-awesome-icon class="icon" :icon="['fab', 'linkedin']" />
         </a>
         <a
           href="https://github.com/TheGameFreak720"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon
-            class="icon"
-            :icon="['fab', 'github']"
-          />
+          <font-awesome-icon class="icon" :icon="['fab', 'github']" />
         </a>
         <a
           href="https://twitter.com/MoonMan6033"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon
-            class="icon"
-            :icon="['fab', 'twitter']"
-          />
+          <font-awesome-icon class="icon" :icon="['fab', 'twitter']" />
         </a>
         <a
           href="https://www.hackerrank.com/cyanide6033"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon
-            class="icon"
-            :icon="['fab', 'hackerrank']"
-          />
+          <font-awesome-icon class="icon" :icon="['fab', 'hackerrank']" />
         </a>
       </section>
     </section>
@@ -68,22 +56,22 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        showMenu: false
-      }
+export default {
+  data() {
+    return {
+      showMenu: false,
+    };
+  },
+  methods: {
+    handleMenu: function () {
+      this.showMenu = !this.showMenu;
     },
-    methods: {
-      handleMenu: function() {
-        this.showMenu = !this.showMenu;
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .menu-button {
   display: inline-block;
@@ -94,7 +82,9 @@
   right: 0;
   margin: 1rem;
 
-  .bar1, .bar2, .bar3 {
+  .bar1,
+  .bar2,
+  .bar3 {
     width: 35px;
     height: 5px;
     background-color: $main-accent-color;
@@ -106,8 +96,8 @@
 /* Rotate first bar */
 .change .bar1 {
   background-color: white;
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-  transform: rotate(-45deg) translate(-9px, 6px) ;
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
 }
 
 /* Fade out the second bar */
@@ -118,8 +108,8 @@
 /* Rotate last bar */
 .change .bar3 {
   background-color: white;
-  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-  transform: rotate(45deg) translate(-8px, -8px) ;
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 
 #sidebar {
@@ -150,7 +140,9 @@
     align-items: center;
     height: 40%;
 
-    img, h1, h2 {
+    img,
+    h1,
+    h2 {
       padding: 1rem 0;
     }
 
@@ -187,5 +179,4 @@
     align-items: center;
   }
 }
-
 </style>

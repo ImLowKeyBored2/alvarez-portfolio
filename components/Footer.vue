@@ -1,23 +1,23 @@
 <template>
   <footer class="child-container">
-    <p>&copy {{ currentYear }} Ori Alvarez</p>
+    <p>&copy; {{ currentYear }} Ori Alvarez</p>
   </footer>
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 
 export default {
   data() {
     return {
-      currentYear: moment().format('YYYY')
-    }
-  }
-}
+      currentYear: moment().format("YYYY"),
+    };
+  },
+};
 </script>
 
 <style lang="scss">
-  footer {
-    text-align: center;
-  }
+footer {
+  text-align: center;
+}
 </style>

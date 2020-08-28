@@ -3,47 +3,39 @@
     <section class="content-container">
       <h2>Contact Me</h2>
       <p>Have some questions or just want to just chat? Shoot me a message</p>
-      <form v-on:submit="handleSubmit">
+      <form @submit="handleSubmit">
         <section class="first-section">
-          <label for="name" class="hidden-label">
-            Name
-          </label>
+          <label for="name" class="hidden-label"> Name </label>
           <input
             id="name"
+            v-model="name"
             type="text"
             required
-            v-model="name"
             placeholder="Name"
-          >
-          <label for="email" class="hidden-label">
-            Email
-          </label>
+          />
+          <label for="email" class="hidden-label"> Email </label>
           <input
             id="email"
+            v-model="email"
             type="email"
             required
-            v-model="email"
             placeholder="Email"
-          >
+          />
         </section>
         <section class="second-section">
-          <label for="subject" class="hidden-label">
-            Subject
-          </label>
+          <label for="subject" class="hidden-label"> Subject </label>
           <input
             id="subject"
+            v-model="subject"
             type="text"
             required
-            v-model="subject"
             placeholder="Subject"
-          >
-          <label for="message" class="hidden-label">
-            Message
-          </label>
+          />
+          <label for="message" class="hidden-label"> Message </label>
           <textarea
             id="message"
-            required
             v-model="message"
+            required
             placeholder="Message"
           />
         </section>
@@ -60,35 +52,35 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
-import Toaster from '~/components/Toaster.vue'
+import Toaster from "~/components/Toaster.vue";
 
 export default {
   components: {
-    Toaster
+    Toaster,
   },
   data() {
     return {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
       toaster: {
         alert: null,
-        icon: '',
-        type: '',
-        message: ''
-      }
-    }
+        icon: "",
+        type: "",
+        message: "",
+      },
+    };
   },
   methods: {
-    handleSubmit: function(event) {
+    handleSubmit: function (event) {
       event.preventDefault();
-      this.alert('inbox', 'normal', 'Please wait while we send the message');
+      this.alert("inbox", "normal", "Please wait while we send the message");
       axios
         .post(
-          'https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail',
+          "https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail",
           {
             name: this.name,
             email: this.email,
@@ -96,43 +88,52 @@ export default {
             message: this.message,
           }
         )
-        .then(res => {
-          this.name = '';
-          this.email = '';
-          this.subject = '';
-          this.message = '';
-          this.alert('check-circle', 'success', 'Your message was sent succesfully');
+        .then(() => {
+          this.name = "";
+          this.email = "";
+          this.subject = "";
+          this.message = "";
+          this.alert(
+            "check-circle",
+            "success",
+            "Your message was sent succesfully"
+          );
         })
-        .catch(err => {
-          console.error('[ContactForm] There was an error sending the message' + err);
-          this.alert('bug', 'danger', 'There was an error sending the message. Please try again later');
-        })
+        .catch((err) => {
+          console.error(
+            "[ContactForm] There was an error sending the message" + err
+          );
+          this.alert(
+            "bug",
+            "danger",
+            "There was an error sending the message. Please try again later"
+          );
+        });
     },
-    alert: function(icon, type, message) {
+    alert: function (icon, type, message) {
       this.toaster = {
         alert: true,
         icon,
         type,
-        message
-      }
+        message,
+      };
 
-      setTimeout(this.clearAlert, 5000)
+      setTimeout(this.clearAlert, 5000);
     },
-    clearAlert: function() {
+    clearAlert: function () {
       this.toaster = {
         alert: null,
-        icon: '',
-        type: '',
-        message: ''
-      }
-    }
-  }
-}
+        icon: "",
+        type: "",
+        message: "",
+      };
+    },
+  },
+};
 </script>
 
-
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 #contact-container {
   .hidden-label {
@@ -164,7 +165,8 @@ export default {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      input, textarea {
+      input,
+      textarea {
         font-size: 1rem;
         border-radius: 0.5rem;
         border: 3px solid $input-border-color;
@@ -180,7 +182,7 @@ export default {
         resize: none;
       }
     }
-    input[type=submit] {
+    input[type="submit"] {
       font-size: 1rem;
       padding: 1rem 3rem;
       text-align: center;
@@ -190,10 +192,11 @@ export default {
       text-decoration: none;
       background-color: $main-accent-color;
       border: 3px solid $main-accent-color-lighter;
-      &:focus, &:hover {
+      &:focus,
+      &:hover {
         background-color: $main-accent-color-darker;
       }
     }
-}
+  }
 }
 </style>
