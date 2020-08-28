@@ -1,13 +1,7 @@
 <template>
-  <section
-    class="toaster"
-    v-bind:class="type"
-  >
+  <section class="toaster" :class="type">
     <section v-if="icon">
-       <font-awesome-icon
-         class="icon"
-         :icon="['fas',  icon ]"
-       />
+      <font-awesome-icon class="icon" :icon="['fas', icon]" />
     </section>
     <p>{{ message }}</p>
   </section>
@@ -15,16 +9,25 @@
 
 <script>
 export default {
-  props: [
-    'icon',
-    'message',
-    'type'
-  ]
-}
+  props: {
+    icon: {
+      type: String,
+      default: "",
+    },
+    message: {
+      type: String,
+      default: "",
+    },
+    type: {
+      type: String,
+      default: "",
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .success {
   background-color: $success;
