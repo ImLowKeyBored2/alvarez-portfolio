@@ -40,7 +40,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ["@nuxtjs/vuetify"],
   /*
    ** Nuxt.js modules
    */
@@ -61,6 +61,12 @@ export default {
       },
     ],
   ],
+  /**
+   * Vuetify Configuration
+   */
+  vuetify: {
+    optionsPath: "./vuetify.options.js",
+  },
   /*
    ** Build configuration
    */
