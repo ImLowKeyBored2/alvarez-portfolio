@@ -1,8 +1,21 @@
 <template>
-  <div>
+  <v-app :dark="isDark">
     <nuxt />
-  </div>
+  </v-app>
 </template>
+
+<script>
+export default {
+  computed: {
+    isDark() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
+    },
+  },
+  created() {
+    this.$vuetify.theme.dark = true;
+  },
+};
+</script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
@@ -17,8 +30,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background-color: $main-bg-color;
-  color: $main-font-color;
 
   @media (max-width: $desktop-sm) {
     font-size: 1em;

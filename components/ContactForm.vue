@@ -2,45 +2,35 @@
   <section id="contact-container">
     <section class="content-container">
       <h2>Contact Me</h2>
-      <p>Have some questions or just want to just chat? Shoot me a message</p>
-      <form @submit="handleSubmit">
-        <section class="first-section">
-          <label for="name" class="hidden-label"> Name </label>
-          <input
-            id="name"
-            v-model="name"
-            type="text"
-            required
-            placeholder="Name"
-          />
-          <label for="email" class="hidden-label"> Email </label>
-          <input
-            id="email"
-            v-model="email"
-            type="email"
-            required
-            placeholder="Email"
-          />
-        </section>
-        <section class="second-section">
-          <label for="subject" class="hidden-label"> Subject </label>
-          <input
-            id="subject"
-            v-model="subject"
-            type="text"
-            required
-            placeholder="Subject"
-          />
-          <label for="message" class="hidden-label"> Message </label>
-          <textarea
-            id="message"
-            v-model="message"
-            required
-            placeholder="Message"
-          />
-        </section>
-        <input type="submit" value="Submit" />
-      </form>
+      <v-form ref="form" v-model="valid">
+        <v-text-field
+          v-model="name"
+          :rules="requiredRules"
+          required
+          label="Name"
+        />
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          required
+          label="Email"
+        />
+        <v-text-field
+          v-model="subject"
+          :rules="requiredRules"
+          required
+          label="Subject"
+        />
+        <v-textarea
+          v-model="message"
+          :rules="requiredRules"
+          required
+          label="Message"
+        />
+        <v-btn large color="primary" class="mt-4" @click="handleSubmit">
+          Submit
+        </v-btn>
+      </v-form>
       <Toaster
         v-if="toaster.alert"
         :icon="toaster.icon"
@@ -62,6 +52,7 @@ export default {
   },
   data() {
     return {
+      valid: true,
       name: "",
       email: "",
       subject: "",
@@ -72,43 +63,51 @@ export default {
         type: "",
         message: "",
       },
+      emailRules: [
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+/.test(v) || "E-mail must be valid",
+      ],
+      requiredRules: [(v) => !!v || "Required"],
     };
   },
   methods: {
     handleSubmit: function (event) {
       event.preventDefault();
-      this.alert("inbox", "normal", "Please wait while we send the message");
-      axios
-        .post(
-          "https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail",
-          {
-            name: this.name,
-            email: this.email,
-            subject: this.subject,
-            message: this.message,
-          }
-        )
-        .then(() => {
-          this.name = "";
-          this.email = "";
-          this.subject = "";
-          this.message = "";
-          this.alert(
-            "check-circle",
-            "success",
-            "Your message was sent succesfully"
-          );
-        })
-        .catch((err) => {
-          console.error(
-            "[ContactForm] There was an error sending the message" + err
-          );
-          this.alert(
-            "bug",
-            "danger",
-            "There was an error sending the message. Please try again later"
-          );
-        });
+      this.$refs.form.validate();
+      if (this.valid) {
+        this.alert("inbox", "normal", "Please wait while we send the message");
+        axios
+          .post(
+            "https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail",
+            {
+              name: this.name,
+              email: this.email,
+              subject: this.subject,
+              message: this.message,
+            }
+          )
+          .then(() => {
+            this.name = "";
+            this.email = "";
+            this.subject = "";
+            this.message = "";
+            this.alert(
+              "check-circle",
+              "success",
+              "Your message was sent succesfully"
+            );
+          })
+          .catch((err) => {
+            console.error(
+              "[ContactForm] There was an error sending the message" + err
+            );
+            this.alert(
+              "bug",
+              "danger",
+              "There was an error sending the message. Please try again later"
+            );
+          });
+      }
     },
     alert: function (icon, type, message) {
       this.toaster = {
@@ -131,72 +130,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-@import "@/assets/scss/variables.scss";
-
-#contact-container {
-  .hidden-label {
-    display: none;
-  }
-
-  form {
-    .first-section {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      input {
-        width: 40%;
-        border-radius: 0.5rem;
-        border: 3px solid $input-border-color;
-        font-size: 1rem;
-        padding: 0.5rem;
-        &:focus {
-          border: 3px solid $input-border-color-focus;
-        }
-        @media (max-width: $tablet-lg) {
-          width: 100%;
-          margin: 1rem 0;
-        }
-      }
-    }
-    .second-section {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      input,
-      textarea {
-        font-size: 1rem;
-        border-radius: 0.5rem;
-        border: 3px solid $input-border-color;
-        font-size: 1rem;
-        padding: 0.5rem;
-        &:focus {
-          border: 3px solid $input-border-color-focus;
-        }
-      }
-      textarea {
-        margin: 1rem 0;
-        height: 10rem;
-        resize: none;
-      }
-    }
-    input[type="submit"] {
-      font-size: 1rem;
-      padding: 1rem 3rem;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 0.5rem;
-      color: white;
-      text-decoration: none;
-      background-color: $main-accent-color;
-      border: 3px solid $main-accent-color-lighter;
-      &:focus,
-      &:hover {
-        background-color: $main-accent-color-darker;
-      }
-    }
-  }
-}
-</style>
