@@ -57,12 +57,12 @@ h6 {
   font-size: 0.67em;
 }
 
-.icon {
-  font-size: 2em;
-  color: darken($main-font-color, 10%);
+.link-icon {
+  font-size: 2em !important;
+  color: darken($main-font-color, 10%) !important;
 
   &:hover {
-    color: $main-font-color;
+    color: $main-font-color !important;
     cursor: pointer;
   }
 }
