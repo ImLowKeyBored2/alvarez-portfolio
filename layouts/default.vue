@@ -21,8 +21,11 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import "@/assets/scss/variables.scss";
 
-html {
+.v-application {
   font-family: "Arvo", serif;
+}
+
+html {
   font-size: 1.3em;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
