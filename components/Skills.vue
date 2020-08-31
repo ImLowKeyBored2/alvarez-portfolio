@@ -62,6 +62,7 @@
     display: flex;
     align-items: center;
     width: 50%;
+    box-sizing: content-box;
 
     @media (max-width: $tablet-lg) {
       width: 100%;
