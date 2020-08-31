@@ -37,7 +37,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  <font-awesome-icon class="icon" :icon="['fab', 'github']" />
+                  <v-icon class="link-icon">fab fa-github</v-icon>
                 </a>
                 <a
                   v-if="project.fields.projectUrl"
@@ -45,10 +45,7 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  <font-awesome-icon
-                    class="icon"
-                    :icon="['fas', 'laptop-code']"
-                  />
+                  <v-icon class="link-icon">fas fa-laptop-code</v-icon>
                 </a>
               </section>
             </section>

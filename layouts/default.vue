@@ -1,142 +1,31 @@
 <template>
-  <div>
+  <v-app :dark="isDark">
     <nuxt />
-  </div>
+  </v-app>
 </template>
+
+<script>
+export default {
+  computed: {
+    isDark() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
+    },
+  },
+  created() {
+    this.$vuetify.theme.dark = true;
+  },
+};
+</script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import "@/assets/scss/variables.scss";
 
-/* CSS Reset */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+.v-application {
+  font-family: "Arvo", serif;
 }
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* End CSS Reset */
 
 html {
-  font-family: "Arvo", serif;
   font-size: 1.3em;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -144,8 +33,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background-color: $main-bg-color;
-  color: $main-font-color;
 
   @media (max-width: $desktop-sm) {
     font-size: 1em;
@@ -184,12 +71,12 @@ h6 {
   font-size: 0.67em;
 }
 
-.icon {
-  font-size: 2em;
-  color: darken($main-font-color, 10%);
+.link-icon {
+  font-size: 2em !important;
+  color: darken($main-font-color, 10%) !important;
 
   &:hover {
-    color: $main-font-color;
+    color: $main-font-color !important;
     cursor: pointer;
   }
 }

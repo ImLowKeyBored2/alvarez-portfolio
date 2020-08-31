@@ -27,28 +27,28 @@
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon class="icon" :icon="['fab', 'linkedin']" />
+          <v-icon class="link-icon">fab fa-linkedin</v-icon>
         </a>
         <a
           href="https://github.com/TheGameFreak720"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon class="icon" :icon="['fab', 'github']" />
+          <v-icon class="link-icon">fab fa-github</v-icon>
         </a>
         <a
           href="https://twitter.com/MoonMan6033"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon class="icon" :icon="['fab', 'twitter']" />
+          <v-icon class="link-icon">fab fa-twitter</v-icon>
         </a>
         <a
           href="https://www.hackerrank.com/cyanide6033"
           target="_blank"
           rel="noopener"
         >
-          <font-awesome-icon class="icon" :icon="['fab', 'hackerrank']" />
+          <v-icon class="link-icon">fab fa-hackerrank</v-icon>
         </a>
       </section>
     </section>

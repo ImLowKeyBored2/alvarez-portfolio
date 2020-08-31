@@ -11,36 +11,33 @@
       </p>
       <section class="skill-container">
         <section class="skill">
-          <font-awesome-icon class="skill-icon" :icon="['fas', 'code']" />
+          <v-icon class="skill-icon">fas fa-code</v-icon>
           <p>
             Experience on Full Stack technologies like React, Vue, NodeJS and
             GraphQL
           </p>
         </section>
         <section class="skill">
-          <font-awesome-icon class="skill-icon" :icon="['fas', 'terminal']" />
+          <v-icon class="skill-icon">fas fa-terminal</v-icon>
           <p>
             Daily user of Linux/Unix systems having a basic understanding on how
             it operates
           </p>
         </section>
         <section class="skill">
-          <font-awesome-icon
-            class="skill-icon"
-            :icon="['fas', 'code-branch']"
-          />
+          <v-icon class="skill-icon">fas fa-code-branch</v-icon>
           <p>Managed projects using Git for version control</p>
         </section>
         <section class="skill">
-          <font-awesome-icon class="skill-icon" :icon="['fas', 'bug']" />
+          <v-icon class="skill-icon">fas fa-bug</v-icon>
           <p>Always willing to get into the weeds to analyze and solve bugs</p>
         </section>
         <section class="skill">
-          <font-awesome-icon class="skill-icon" :icon="['fas', 'server']" />
+          <v-icon class="skill-icon">fas fa-server</v-icon>
           <p>Expertise in both relational and non-relational databases</p>
         </section>
         <section class="skill">
-          <font-awesome-icon class="skill-icon" :icon="['fas', 'book']" />
+          <v-icon class="skill-icon">fas fa-book</v-icon>
           <p>
             Capable of learning new technologies on the job or outside to meet
             work or personal goals
@@ -72,6 +69,7 @@
       background-color: $main-accent-color;
       border-radius: 50%;
       padding: 1rem;
+      color: $main-font-color;
     }
   }
 

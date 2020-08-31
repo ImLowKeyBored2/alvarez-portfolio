@@ -36,31 +36,15 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ["~/plugins/vuetify.js"],
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ["@nuxtjs/vuetify"],
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    [
-      "nuxt-fontawesome",
-      {
-        imports: [
-          {
-            set: "@fortawesome/free-solid-svg-icons",
-            icons: ["fas"],
-          },
-          {
-            set: "@fortawesome/free-brands-svg-icons",
-            icons: ["fab"],
-          },
-        ],
-      },
-    ],
-  ],
+  modules: [],
   /*
    ** Build configuration
    */

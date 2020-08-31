@@ -1,7 +1,7 @@
 <template>
   <section class="toaster" :class="type">
     <section v-if="icon">
-      <font-awesome-icon class="icon" :icon="['fas', icon]" />
+      <v-icon class="link-icon">fas fa-{{icon}}</v-icon>
     </section>
     <p>{{ message }}</p>
   </section>
@@ -53,7 +53,7 @@ export default {
   bottom: 0;
   margin: 1rem 0;
 
-  .icon {
+  .link-icon {
     margin-right: 1rem;
   }
 }
