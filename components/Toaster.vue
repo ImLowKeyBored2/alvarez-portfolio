@@ -1,7 +1,7 @@
 <template>
   <section class="toaster" :class="type">
     <section v-if="icon">
-      <v-icon class="link-icon">fas fa-{{icon}}</v-icon>
+      <v-icon class="link-icon">fas fa-{{ icon }}</v-icon>
     </section>
     <p>{{ message }}</p>
   </section>
