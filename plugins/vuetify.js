@@ -16,7 +16,6 @@ Vue.use(Vuetify, {
         info: "#2196F3",
         success: "#29C7AC",
         warning: "#FFBF00",
-        background: "F7F9F9",
         fontColor: "1B262C",
       },
       dark: {
@@ -27,7 +26,6 @@ Vue.use(Vuetify, {
         info: "#2196F3",
         success: "#29C7AC",
         warning: "#FFBF00",
-        background: "#1B262C",
         fontColor: "F0ECE2",
       },
     },

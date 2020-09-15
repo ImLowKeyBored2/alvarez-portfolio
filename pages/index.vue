@@ -239,26 +239,6 @@ export default {
 
     button {
       margin: 0 1rem;
-      padding: 1rem 3rem;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 0.5rem;
-      color: white;
-      font-size: 1rem;
-      text-decoration: none;
-      background-color: $main-accent-color;
-      border: 3px solid $main-accent-color-lighter;
-
-      &:focus,
-      &:hover {
-        background-color: $main-accent-color-darker;
-      }
-
-      &:disabled {
-        background-color: #cccccc;
-        border-color: #999999;
-        color: #666666;
-      }
     }
   }
 }
