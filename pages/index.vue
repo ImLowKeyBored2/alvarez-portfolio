@@ -55,12 +55,20 @@
             error-message="There was an error loading the projects. Please try again later."
           />
           <section class="pagination">
-            <button :disabled="prevPage === null" @click="handlePrevPage">
-              Previous
-            </button>
-            <button :disabled="nextPage === null" @click="handleNextPage">
-              Next
-            </button>
+            <v-btn
+              x-large
+              color="primary"
+              :disabled="prevPage === null"
+              @click="handlePrevPage"
+              >Previous</v-btn
+            >
+            <v-btn
+              x-large
+              color="primary"
+              :disabled="nextPage === null"
+              @click="handleNextPage"
+              >Next</v-btn
+            >
           </section>
         </section>
       </section>
