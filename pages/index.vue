@@ -1,6 +1,7 @@
 <template>
   <section>
     <section class="main-container">
+      <Sidebar />
       <section class="child-container">
         <About />
       </section>
@@ -74,10 +75,9 @@
       </section>
       <section class="child-container">
         <ContactForm />
+        <Footer />
       </section>
-      <Footer />
     </section>
-    <Sidebar />
   </section>
 </template>
 
@@ -185,7 +185,7 @@ export default {
   .child-container {
     border-bottom: 0.3rem solid $main-border-color;
 
-    &:nth-child(4) {
+    &:nth-child(5) {
       border: none;
     }
   }
