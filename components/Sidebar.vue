@@ -4,15 +4,14 @@
       <v-icon class="drawer-icon">{{ drawer ? "fa-times" : "fa-bars" }}</v-icon>
     </v-btn>
     <v-card>
-      <v-navigation-drawer
-        v-if="drawer"
-        v-model="drawer"
-        temporary
-      >
+      <v-navigation-drawer v-if="drawer" v-model="drawer" width="300" temporary>
         <v-list>
           <v-list-item class="px-2">
             <v-list-item-avatar>
-              <v-img src="@/assets/img/ori.jpg" alt="Ori Alvarez"></v-img>
+              <v-img
+                :src="author.fields.authorImage.fields.file.url"
+                alt="Ori Alvarez"
+              ></v-img>
             </v-list-item-avatar>
 
             <v-list-item-title></v-list-item-title>
@@ -20,9 +19,9 @@
 
           <v-list-item link>
             <v-list-item-content>
-              <v-list-item-title class="title">Ori Alvarez </v-list-item-title>
+              <v-list-item-title class="title">{{ author.fields.name }}</v-list-item-title>
               <v-list-item-subtitle
-                >ori.alvarez@commithub.com</v-list-item-subtitle
+                >{{ author.fields.email }}</v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>
@@ -48,6 +47,19 @@
 
 <script>
 export default {
+  props: {
+    author: {
+      type: Object,
+      default: function () {
+        return {
+          id: "",
+          name: "",
+          authorImage: "",
+          email: "",
+        };
+      },
+    },
+  },
   data() {
     return {
       drawer: false,

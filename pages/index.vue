@@ -1,7 +1,7 @@
 <template>
   <section>
     <section class="main-container">
-      <Sidebar />
+      <Sidebar :author="author" />
       <section class="child-container">
         <About />
       </section>
@@ -103,8 +103,16 @@ export default {
     ErrorBox,
   },
   asyncData() {
-    return Promise.all([client.getEntries()])
-      .then(([projects]) => {
+    return Promise.all([
+      client.getEntries({
+        content_type: "project",
+      }),
+
+      client.getEntries({
+        content_type: "author",
+      }),
+    ])
+      .then(([projects, authors]) => {
         function chunk(arr, chunkSize) {
           const chunkedArray = [];
           for (let i = 0; i < arr.length; i += chunkSize) {
@@ -122,18 +130,20 @@ export default {
         }
 
         return {
+          author: authors.items[0],
           projects: projectsChunked,
           pageNumberCount,
           nextPage,
         };
       })
       .catch((err) =>
-        console.error(`[Projects] Could not load projects: ${err}`)
+        console.error(`[Contentful] Could not load content: ${err}`)
       );
   },
   data() {
     return {
       projects: [],
+      author: null,
       pageNumberCount: 0,
       currentPage: 0,
       prevPage: null,
