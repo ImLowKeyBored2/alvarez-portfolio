@@ -65,10 +65,7 @@
     }
 
     .skill-icon {
-      font-size: 0.8rem;
-      background-color: $main-accent-color;
-      border-radius: 50%;
-      padding: 1rem;
+      font-size: 2em;
       color: $main-font-color;
     }
   }

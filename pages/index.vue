@@ -1,6 +1,7 @@
 <template>
   <section>
     <section class="main-container">
+      <Sidebar :author="author" />
       <section class="child-container">
         <About />
       </section>
@@ -55,21 +56,28 @@
             error-message="There was an error loading the projects. Please try again later."
           />
           <section class="pagination">
-            <button :disabled="prevPage === null" @click="handlePrevPage">
-              Previous
-            </button>
-            <button :disabled="nextPage === null" @click="handleNextPage">
-              Next
-            </button>
+            <v-btn
+              x-large
+              color="primary"
+              :disabled="prevPage === null"
+              @click="handlePrevPage"
+              >Previous</v-btn
+            >
+            <v-btn
+              x-large
+              color="primary"
+              :disabled="nextPage === null"
+              @click="handleNextPage"
+              >Next</v-btn
+            >
           </section>
         </section>
       </section>
       <section class="child-container">
         <ContactForm />
+        <Footer />
       </section>
-      <Footer />
     </section>
-    <Sidebar />
   </section>
 </template>
 
@@ -95,8 +103,16 @@ export default {
     ErrorBox,
   },
   asyncData() {
-    return Promise.all([client.getEntries()])
-      .then(([projects]) => {
+    return Promise.all([
+      client.getEntries({
+        content_type: "project",
+      }),
+
+      client.getEntries({
+        content_type: "author",
+      }),
+    ])
+      .then(([projects, authors]) => {
         function chunk(arr, chunkSize) {
           const chunkedArray = [];
           for (let i = 0; i < arr.length; i += chunkSize) {
@@ -114,18 +130,20 @@ export default {
         }
 
         return {
+          author: authors.items[0],
           projects: projectsChunked,
           pageNumberCount,
           nextPage,
         };
       })
       .catch((err) =>
-        console.error(`[Projects] Could not load projects: ${err}`)
+        console.error(`[Contentful] Could not load content: ${err}`)
       );
   },
   data() {
     return {
       projects: [],
+      author: null,
       pageNumberCount: 0,
       currentPage: 0,
       prevPage: null,
@@ -177,7 +195,7 @@ export default {
   .child-container {
     border-bottom: 0.3rem solid $main-border-color;
 
-    &:nth-child(4) {
+    &:nth-child(5) {
       border: none;
     }
   }
@@ -231,26 +249,6 @@ export default {
 
     button {
       margin: 0 1rem;
-      padding: 1rem 3rem;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 0.5rem;
-      color: white;
-      font-size: 1rem;
-      text-decoration: none;
-      background-color: $main-accent-color;
-      border: 3px solid $main-accent-color-lighter;
-
-      &:focus,
-      &:hover {
-        background-color: $main-accent-color-darker;
-      }
-
-      &:disabled {
-        background-color: #cccccc;
-        border-color: #999999;
-        color: #666666;
-      }
     }
   }
 }
