@@ -3,7 +3,7 @@
     <section class="main-container">
       <Sidebar :author="author" />
       <section class="child-container">
-        <About />
+        <About :author="author" />
       </section>
       <section class="child-container">
         <Skills />
@@ -51,9 +51,11 @@
               </section>
             </section>
           </section>
-          <ErrorBox
+          <Snackbar
             v-if="!projects.length"
-            error-message="There was an error loading the projects. Please try again later."
+            icon="bug"
+            message="There was an error loading the projects. Please try again later."
+            type="error"
           />
           <section class="pagination">
             <v-btn
@@ -89,7 +91,7 @@ import About from "~/components/About.vue";
 import Skills from "~/components/Skills.vue";
 import ContactForm from "~/components/ContactForm.vue";
 import Footer from "~/components/Footer.vue";
-import ErrorBox from "~/components/ErrorBox.vue";
+import Snackbar from "~/components/Snackbar.vue";
 
 const client = createClient();
 
@@ -100,7 +102,7 @@ export default {
     Skills,
     ContactForm,
     Footer,
-    ErrorBox,
+    Snackbar,
   },
   asyncData() {
     return Promise.all([
@@ -108,11 +110,9 @@ export default {
         content_type: "project",
       }),
 
-      client.getEntries({
-        content_type: "author",
-      }),
+      client.getEntry("1eKimBT6OozCeudiHS4tCU"),
     ])
-      .then(([projects, authors]) => {
+      .then(([projects, author]) => {
         function chunk(arr, chunkSize) {
           const chunkedArray = [];
           for (let i = 0; i < arr.length; i += chunkSize) {
@@ -130,7 +130,7 @@ export default {
         }
 
         return {
-          author: authors.items[0],
+          author: author,
           projects: projectsChunked,
           pageNumberCount,
           nextPage,

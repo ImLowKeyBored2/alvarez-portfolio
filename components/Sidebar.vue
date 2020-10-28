@@ -72,10 +72,12 @@ export default {
       type: Object,
       default: function () {
         return {
-          id: "",
-          name: "",
-          authorImage: "",
-          email: "",
+          fields: {
+            id: "",
+            name: "",
+            authorImage: "",
+            email: "",
+          },
         };
       },
     },

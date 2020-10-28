@@ -2,7 +2,7 @@
   <header id="about-container">
     <section id="jumbotron" />
     <section class="content-container">
-      <h1 id="title">Ori Alvarez</h1>
+      <h1 id="title">{{ author.fields.name }}</h1>
       <h2>About Me</h2>
       <p>
         I'm a Full Stack Engineer and tech enthusiast. My passion for tech
@@ -19,6 +19,26 @@
     </section>
   </header>
 </template>
+
+<script>
+export default {
+  props: {
+    author: {
+      type: Object,
+      default: function () {
+        return {
+          fields: {
+            id: "",
+            name: "",
+            authorImage: "",
+            email: "",
+          },
+        };
+      },
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 @import "@/assets/scss/variables.scss";
