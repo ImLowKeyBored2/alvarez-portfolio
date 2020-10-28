@@ -31,11 +31,11 @@
           Submit
         </v-btn>
       </v-form>
-      <Toaster
-        v-if="toaster.alert"
-        :icon="toaster.icon"
-        :type="toaster.type"
-        :message="toaster.message"
+      <Snackbar
+        v-if="snackbar.alert"
+        :icon="snackbar.icon"
+        :type="snackbar.type"
+        :message="snackbar.message"
       />
     </section>
   </section>
@@ -44,11 +44,11 @@
 <script>
 import axios from "axios";
 
-import Toaster from "~/components/Toaster.vue";
+import Snackbar from "~/components/Snackbar.vue";
 
 export default {
   components: {
-    Toaster,
+    Snackbar,
   },
   data() {
     return {
@@ -57,8 +57,8 @@ export default {
       email: "",
       subject: "",
       message: "",
-      toaster: {
-        alert: null,
+      snackbar: {
+        alert: false,
         icon: "",
         type: "",
         message: "",
@@ -75,7 +75,7 @@ export default {
       event.preventDefault();
       this.$refs.form.validate();
       if (this.valid) {
-        this.alert("inbox", "normal", "Please wait while we send the message");
+        this.alert("inbox", "primary", "Please wait while we send the message");
         axios
           .post(
             "https://us-central1-lalvarez-portfolio.cloudfunctions.net/contactUsEmail",
@@ -103,14 +103,14 @@ export default {
             );
             this.alert(
               "bug",
-              "danger",
+              "error",
               "There was an error sending the message. Please try again later"
             );
           });
       }
     },
     alert: function (icon, type, message) {
-      this.toaster = {
+      this.snackbar = {
         alert: true,
         icon,
         type,
@@ -120,8 +120,8 @@ export default {
       setTimeout(this.clearAlert, 5000);
     },
     clearAlert: function () {
-      this.toaster = {
-        alert: null,
+      this.snackbar = {
+        alert: false,
         icon: "",
         type: "",
         message: "",
