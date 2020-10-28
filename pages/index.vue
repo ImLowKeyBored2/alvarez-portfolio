@@ -51,9 +51,11 @@
               </section>
             </section>
           </section>
-          <ErrorBox
+          <Snackbar
             v-if="!projects.length"
-            error-message="There was an error loading the projects. Please try again later."
+            icon="bug"
+            message="There was an error loading the projects. Please try again later."
+            type="error"
           />
           <section class="pagination">
             <v-btn
@@ -89,7 +91,7 @@ import About from "~/components/About.vue";
 import Skills from "~/components/Skills.vue";
 import ContactForm from "~/components/ContactForm.vue";
 import Footer from "~/components/Footer.vue";
-import ErrorBox from "~/components/ErrorBox.vue";
+import Snackbar from "~/components/Snackbar.vue";
 
 const client = createClient();
 
@@ -100,7 +102,7 @@ export default {
     Skills,
     ContactForm,
     Footer,
-    ErrorBox,
+    Snackbar,
   },
   asyncData() {
     return Promise.all([
