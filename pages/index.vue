@@ -3,7 +3,7 @@
     <section class="main-container">
       <Sidebar :author="author" />
       <section class="child-container">
-        <About />
+        <About :author="author" />
       </section>
       <section class="child-container">
         <Skills />
@@ -108,11 +108,9 @@ export default {
         content_type: "project",
       }),
 
-      client.getEntries({
-        content_type: "author",
-      }),
+      client.getEntry("1eKimBT6OozCeudiHS4tCU"),
     ])
-      .then(([projects, authors]) => {
+      .then(([projects, author]) => {
         function chunk(arr, chunkSize) {
           const chunkedArray = [];
           for (let i = 0; i < arr.length; i += chunkSize) {
@@ -130,7 +128,7 @@ export default {
         }
 
         return {
-          author: authors.items[0],
+          author: author,
           projects: projectsChunked,
           pageNumberCount,
           nextPage,
